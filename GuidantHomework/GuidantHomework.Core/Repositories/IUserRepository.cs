@@ -11,9 +11,9 @@ namespace GuidantHomework.Core.Repositories
     public interface IUserRepository
     {
         IList<User> GetAll();
-        User GetById(long pId);
-        bool Add(User user);
-        bool Update(User user);
-        bool Delete(User user);
+        User GetById(int pId);
+        void Add(User user);
+        void Update(User user);
+        void Delete(User user);
     }
 }

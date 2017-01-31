@@ -1,3 +1,14 @@
 GuidantHomework/.vs/GuidantHomework/v14/.suo
 GuidantHomework/packages/
 GuidantHomework/GuidantHomework/bin/
+GuidantHomework/GuidantHomework.Tests/bin/
+GuidantHomework/GuidantHomework.Services/obj/
+GuidantHomework/GuidantHomework.Tests/obj/
+GuidantHomework/GuidantHomework.Services/bin/
+GuidantHomework/GuidantHomework.Core/bin/
+GuidantHomework/GuidantHomework.Core/obj/
+GuidantHomework/GuidantHomework/obj/
+GuidantHomework/GuidantHomework.IoC/obj/
+GuidantHomework/GuidantHomework.IoC/bin/
+GuidantHomework/GuidantHomework.Data/bin/
+GuidantHomework/GuidantHomework.Data/obj/

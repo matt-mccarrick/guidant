@@ -8,13 +8,13 @@ using GuidantHomework.Core.Model;
 
 namespace GuidantHomework.Data.FakeDB
 {
-    public static class FakeDB
+    public static class db
     {
         //Normally would be using a db, but this makes sense to distribute with the project
         //Especially when the sql would be so simple
         public static List<User> Users { get; set; }
 
-        static FakeDB()
+        static db()
         {
             //This is just used to populate our data store for testing purposes
             Users = PopulateForTest();
