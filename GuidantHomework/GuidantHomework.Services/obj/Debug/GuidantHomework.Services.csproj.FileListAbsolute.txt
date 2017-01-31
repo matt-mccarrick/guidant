@@ -1,0 +1,7 @@
+C:\Development\git\Guidant\GuidantHomework\GuidantHomework.Services\bin\Debug\GuidantHomework.Services.dll
+C:\Development\git\Guidant\GuidantHomework\GuidantHomework.Services\bin\Debug\GuidantHomework.Services.pdb
+C:\Development\git\Guidant\GuidantHomework\GuidantHomework.Services\bin\Debug\GuidantHomework.Core.dll
+C:\Development\git\Guidant\GuidantHomework\GuidantHomework.Services\bin\Debug\GuidantHomework.Core.pdb
+C:\Development\git\Guidant\GuidantHomework\GuidantHomework.Services\obj\Debug\GuidantHomework.Services.csprojResolveAssemblyReference.cache
+C:\Development\git\Guidant\GuidantHomework\GuidantHomework.Services\obj\Debug\GuidantHomework.Services.dll
+C:\Development\git\Guidant\GuidantHomework\GuidantHomework.Services\obj\Debug\GuidantHomework.Services.pdb
