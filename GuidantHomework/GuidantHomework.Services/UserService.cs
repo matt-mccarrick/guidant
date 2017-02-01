@@ -11,7 +11,7 @@ namespace GuidantHomework.Services
 {
     public class UserService : IUserService
     {
-        private IUserRepository _userRepository;
+        private readonly IUserRepository _userRepository;
 
         public UserService(IUserRepository userRepository)
         {
@@ -19,22 +19,25 @@ namespace GuidantHomework.Services
         }
         public IEnumerable<User> GetAllUsers()
         {
-            throw new NotImplementedException();
+            return _userRepository.GetAll();
         }
 
         public int AddUser(User user)
         {
-            throw new NotImplementedException();
+           return _userRepository.Add(user);
         }
 
         public User GetUser(int id)
         {
-            throw new NotImplementedException();
+            return _userRepository.GetById(id);
         }
 
         public void SetPoints(int id, int points)
         {
-            throw new NotImplementedException();
+            var user = _userRepository.GetById(id);
+            user.Points = points;
+            //This line is redundant because we're modifying in-memory storage and c# is pass by ref, but this would be how this method would be structured with a DB behind it
+            _userRepository.Update(user);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace GuidantHomework.Core.Repositories
     {
         IList<User> GetAll();
         User GetById(int pId);
-        void Add(User user);
+        int Add(User user);
         void Update(User user);
         void Delete(User user);
     }

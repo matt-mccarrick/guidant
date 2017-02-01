@@ -33,10 +33,12 @@ namespace GuidantHomework.Data.Repositories
             return db.Users.FirstOrDefault(u => u.ID == pId);
         }
 
-        public void Add(User user)
+        public int Add(User user)
         {
             //INSERT INTO Users(Name, Points) Values (@user.Name, @user.Points)
+            //We'd get the return ID from after the insert
             db.Users.Add(user);
+            return user.ID;
         }
 
         public void Update(User user)
