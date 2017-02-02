@@ -33,10 +33,23 @@ namespace GuidantHomework.Data.Repositories
             return db.Users.FirstOrDefault(u => u.ID == pId);
         }
 
+        private bool HasDuplicateName(string name)
+        {
+            return db.Users.Any(u => u.Name == name);
+        }
+
         public int Add(User user)
         {
             //INSERT INTO Users(Name, Points) Values (@user.Name, @user.Points)
             //We'd get the return ID from after the insert
+            //If the user isn't passed in with an ID, let's assign it an ID based on the last item in the list. This is a way to fake an auto-increment that'd be going on in the db
+            if (user.ID == 0)
+                user.ID = db.Users.Last().ID + 1;
+            //Check our "Primary Key" constraint
+            if (db.Users.Any(u=>u.ID == user.ID))
+                throw new Exception("Invalid userID. There's already a user with that ID.");
+            if(HasDuplicateName(user.Name))
+                throw new Exception("Duplicate name. Names must be unique.");
             db.Users.Add(user);
             return user.ID;
         }
@@ -45,17 +58,18 @@ namespace GuidantHomework.Data.Repositories
         {
             //UPDATE Users SET Name = @user.Name, Points = @user.Points WHERE ID = @user.ID
             var stored = db.Users.FirstOrDefault(u => u.ID == user.ID);
-            if (stored != null)
-            {
-                stored.Name = user.Name;
-                stored.Points = user.Points;
-            }
+            //Redundant check with service layer, but we'd probably want this protection in case the repo is accessed outside of the service when the program grows.
+            if (stored == null)
+                throw new Exception($"No user found for ID:{user.ID}");
+
+            stored.Name = user.Name;
+            stored.Points = user.Points;
         }
 
         public void Delete(User user)
         {
             //DELETE FROM Users WHERE ID = @user.ID
-            //we're also going to do this just in case because our list doesn't enforce a primary key on the index
+            //we're also going to remove all just in case because our list doesn't enforce a primary key on the index
             db.Users.RemoveAll(u => u.ID == user.ID);
         }
     }

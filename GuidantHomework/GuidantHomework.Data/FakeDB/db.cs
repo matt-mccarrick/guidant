@@ -59,5 +59,10 @@ namespace GuidantHomework.Data.FakeDB
 
             return collection.ToList();
         }
+        //Only for use with test data
+        public static void RefreshTestData()
+        {
+            Users = PopulateForTest();
+        }
     }
 }

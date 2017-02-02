@@ -92,6 +92,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\UserRepositoryTests.cs" />
+    <Compile Include="Services\UserServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
@@ -100,6 +102,18 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GuidantHomework.Core\GuidantHomework.Core.csproj">
+      <Project>{43b7152f-5a84-477b-b67b-ad0568d87db0}</Project>
+      <Name>GuidantHomework.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GuidantHomework.Data\GuidantHomework.Data.csproj">
+      <Project>{781e5b01-4e2d-43f1-ab61-727525c892d4}</Project>
+      <Name>GuidantHomework.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GuidantHomework.Services\GuidantHomework.Services.csproj">
+      <Project>{3387c01f-0968-4dc7-8831-fe8c9a5c98b4}</Project>
+      <Name>GuidantHomework.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GuidantHomework\GuidantHomework.csproj">
       <Project>{E5C1C32D-3C82-467E-AB2D-DBAF027C1B1B}</Project>
       <Name>GuidantHomework</Name>

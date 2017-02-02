@@ -24,17 +24,22 @@ namespace GuidantHomework.Services
 
         public int AddUser(User user)
         {
-           return _userRepository.Add(user);
+            return _userRepository.Add(user);
         }
 
         public User GetUser(int id)
         {
-            return _userRepository.GetById(id);
+            var user = _userRepository.GetById(id);
+            if(user == null)
+                throw new Exception($"No user found for ID:{id}");
+            return user;
         }
 
         public void SetPoints(int id, int points)
         {
             var user = _userRepository.GetById(id);
+            if (user == null)
+                throw new Exception($"No user found for ID:{id}");
             user.Points = points;
             //This line is redundant because we're modifying in-memory storage and c# is pass by ref, but this would be how this method would be structured with a DB behind it
             _userRepository.Update(user);
