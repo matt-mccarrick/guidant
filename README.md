@@ -19,20 +19,20 @@ Projects
 - Holds our domain models. In this case, only User.
 - Holds our interface definitions for our Services/Repositories
 
-Guidant.Data
+**Guidant.Data**
 - Holds our repositories as well as a static list that we're using for a poor-man's database.
 - I decided to use a static list so that the project was more easily distributable to the team. I added basic SQL calls in comments within the repository methods, to explain what they'd actually be doing
 - Repositories are responsible only for data interactions. They shouldn't have business logic. The closest it comes to that is reinforcing a unique username policy, which would probably be handled by the db definition otherwise.
 
-GuidantHomework.IoC
+**GuidantHomework.IoC**
 - I used Unity for my IoC container. We want to have IoC linking our projects together because it keeps things loosely coupled.
 
-Guidant.Services
+**Guidant.Services**
 - The Service layer is responsible for handling business logic.
 - By separating this from the controllers, it allows us to reuse logic between two projects. So if we had an MVC front-end as well as this WebAPI, we could re-use our service/repository libraries.
 - The service in this project is very similar to the repository, but again, I'm trying to think about what happens when this gets more complicated.
 
-Guidant.Tests
+**Guidant.Tests**
 - Basic unit tests for the classes.
 - Hardly exhaustive, but cover some basic cases so we know we're not breaking code when we make small changes
 
