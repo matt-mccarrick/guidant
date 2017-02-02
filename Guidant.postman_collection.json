@@ -1,0 +1,144 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Guidant",
+		"_postman_id": "ca84f053-bf78-ce7b-7939-3b77b5788928",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Users",
+			"request": {
+				"url": "http://localhost:63564/api/users",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Returns list of users"
+			},
+			"response": []
+		},
+		{
+			"name": "Get User by ID (Valid)",
+			"request": {
+				"url": "http://localhost:63564/api/users/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Returns user fetched by ID"
+			},
+			"response": []
+		},
+		{
+			"name": "Get User by ID (Invalid)",
+			"request": {
+				"url": "http://localhost:63564/api/users/100",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Returns user fetched by ID. Should return an except. Friendly output is in ExceptionMessage value"
+			},
+			"response": []
+		},
+		{
+			"name": "Add User (Valid. Fixed ID)",
+			"request": {
+				"url": "http://localhost:63564/api/users/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"ID\": 6,\n  \"Points\": 0,\n  \"Name\": \"OurNewUser\"\n}"
+				},
+				"description": "Add valid user representation. This has a fixed ID, so submitting it twice will give an exception that there's already a user with that ID"
+			},
+			"response": []
+		},
+		{
+			"name": "Add User (DuplicateID)",
+			"request": {
+				"url": "http://localhost:63564/api/users/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"ID\": 1,\n  \"Points\": 0,\n  \"Name\": \"OurNewUser1\"\n}"
+				},
+				"description": "Add invalid user representation. This should match an existing user and return an exception. Friendly error text should be in the ExceptionMessage value"
+			},
+			"response": []
+		},
+		{
+			"name": "Add User (Valid. No explicitID)",
+			"request": {
+				"url": "http://localhost:63564/api/users/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"Points\": 0,\n  \"Name\": \"OurNewUser1\"\n}"
+				},
+				"description": "Add valid user representation. This doesn't have an id included. Should insert with an incrementing ID based on the most recently inserted user's id. Faking a DB auto-increment\n\nStill need to change the name, because we don't accept duplicate names according to specs"
+			},
+			"response": []
+		},
+		{
+			"name": "Set points (Valid User)",
+			"request": {
+				"url": "http://localhost:63564/api/users/setpoints",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 1,\n  \"points\": 5\n}"
+				},
+				"description": "Passes json object with id and points. ID must be a valid userid"
+			},
+			"response": []
+		},
+		{
+			"name": "Set points (Invalid User)",
+			"request": {
+				"url": "http://localhost:63564/api/users/setpoints",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": -1,\n  \"points\": 5\n}"
+				},
+				"description": "Passes json object with id and points. ID is an invalid userid"
+			},
+			"response": []
+		}
+	]
+}
